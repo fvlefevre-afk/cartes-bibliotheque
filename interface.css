@@ -1,0 +1,49 @@
+/* ===== Bibliothèque commune des cartes interactives (maths et français) : INTERFACE ===== */
+/* Variables : --z = couleur de la leçon ; --cu-u = taille de base du texte (1rem par défaut) ; --cu-tint = fond teinté (calculé si absent) */
+.cu-hd,.cu-page,.cu-accueil,.cu-cartes{--cu-t:var(--cu-tint,color-mix(in srgb,var(--z) 13%,#fff));--cu-s:var(--cu-u,1rem)}
+/* en-tête d'une activité : une seule ligne */
+.cu-hd{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .7rem;min-width:0}
+.cu-hd .cu-sp{flex:1}
+.cu-ic{flex:none;display:inline-flex;align-items:center;gap:.2rem;border:2.5px solid var(--z);background:#fff;color:var(--z);border-radius:2rem;padding:.3rem .8rem;font:inherit;font-weight:700;font-size:var(--cu-s);text-decoration:none;cursor:pointer}
+.cu-hd:not(.cu-hd-page) .cu-ic span{display:none}
+.cu-ic:hover{background:var(--z);color:#fff}
+.cu-ic.cu-map{font-size:calc(var(--cu-s)*1.3);padding:.2rem .6rem}
+.cu-ic.cu-disc{border-color:#c9d2e3;color:#8a93a6;padding:.3rem .5rem}
+.cu-hd .cu-titre{flex:1 1 9rem;min-width:9rem;margin:0;background:color-mix(in srgb,var(--z) 38%,#fff);border:3.5px solid var(--z);border-radius:1.2rem;padding:.05rem .9rem;color:#111;font-size:calc(var(--cu-s)*1.1);line-height:1.15;font-weight:800}
+.cu-etapes{flex:none;display:flex;gap:.35rem;flex-wrap:nowrap}
+.cu-et{display:inline-flex;align-items:center;gap:.4rem;border:2.5px solid #d6dbe5;background:#fff;color:#1f2a44;border-radius:2rem;padding:.2rem .7rem .2rem .3rem;font:inherit;font-weight:700;font-size:calc(var(--cu-s)*.95);white-space:nowrap;cursor:pointer}
+.cu-et i{font-style:normal;display:grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:color-mix(in srgb,var(--z) 18%,#fff);color:var(--z);font-size:.85rem}
+.cu-et .cu-em{display:none}
+.cu-et[aria-pressed=true]{background:var(--z);border-color:var(--z);color:#fff}.cu-et[aria-pressed=true] i{background:#fff;color:var(--z)}.cu-et[aria-pressed=true] .cu-em{display:inline}
+.cu-et.fait:not([aria-pressed=true]){border-color:#23845a}.cu-et.fait:not([aria-pressed=true]) i{background:#23845a;color:#fff}
+.cu-et:disabled{opacity:.45;cursor:default}
+@media (max-width:1100px){.cu-etapes{flex:1 1 100%;order:5}}
+@media (max-width:760px){.cu-et .cu-nom{display:none}.cu-et[aria-pressed=true] .cu-nom{display:inline}.cu-ic span{display:none}}
+/* page des activités : pastille, titre, bandeau, cartes */
+.cu-hd-page{align-items:center}
+.cu-pastille{flex:none;display:grid;place-items:center;min-width:3.6rem;height:3.6rem;padding:0 .4rem;border-radius:2rem;border:4px solid #b9bec9;background:#fff;font-weight:800;color:#1f2a44;font-size:calc(var(--cu-s)*1.2)}
+.cu-pill{flex:none;background:color-mix(in srgb,var(--z) 38%,#fff);border:3.5px solid var(--z);border-radius:1.6rem;padding:.1rem 1.3rem;font-weight:800;color:#111;font-size:calc(var(--cu-s)*1.6)}
+.cu-accueil{display:flex;align-items:center;gap:1rem;margin:.4rem 0 1rem;padding:.7rem 1rem;border-radius:1.4rem;background:var(--cu-t);border:3.5px solid var(--z)}
+.cu-av{flex:none;width:5.6rem;height:6.4rem;object-fit:cover;object-position:top;border-radius:50%/40%}
+.cu-bulle{flex:1;margin:0;background:#fff;border:3.5px solid var(--z);border-radius:1.2rem;padding:.55rem 1rem;display:flex;flex-direction:column}
+.cu-bulle b{font-size:calc(var(--cu-s)*1.5);color:#111}.cu-bulle span{font-size:var(--cu-s);color:#4a5568}
+.cu-prog{flex:none;display:flex;gap:.15rem}.cu-star{font-size:2.2rem;line-height:1;color:#d7dce5}.cu-star.on{color:#f2b705;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+.cu-cartes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr));gap:clamp(.7rem,1.6vw,1.2rem)}
+.cu-act{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;min-height:11rem;text-align:center;text-decoration:none;color:#1f2a44;font:inherit;background:var(--cu-t);border:3.5px solid var(--z);border-radius:1.8rem;padding:1rem .8rem;cursor:pointer;box-shadow:0 6px 0 color-mix(in srgb,var(--z) 35%,transparent);transition:transform .15s}
+.cu-act:hover{transform:translateY(-3px)}
+.cu-act b{font-size:calc(var(--cu-s)*1.35);line-height:1.2;color:#111}.cu-act small{font-size:var(--cu-s);font-weight:700;color:var(--z)}
+.cu-ci{display:grid;place-items:center;min-height:4rem;color:var(--z);font-size:calc(var(--cu-s)*3)}.cu-ci svg{width:3.6rem;height:3.6rem}
+.cu-num{position:absolute;left:.7rem;top:.6rem;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--z);color:#fff;font-weight:800;display:grid;place-items:center}
+.cu-act.suivant{box-shadow:0 0 0 5px color-mix(in srgb,var(--z) 30%,transparent),0 6px 0 color-mix(in srgb,var(--z) 35%,transparent)}
+.cu-act.fait{background:#e3f6e9;border-color:#23845a}.cu-act.fait .cu-num{background:#23845a}.cu-act.fait small{color:#23845a}
+@media (max-width:760px){.cu-accueil{flex-wrap:wrap}.cu-prog{flex-basis:100%;justify-content:center}}
+/* fenêtre « Je retiens » */
+#cu-retiens{position:fixed;inset:0;z-index:100;background:rgba(31,42,68,.55);display:grid;place-items:center;padding:1rem}
+#cu-retiens .cu-f{position:relative;background:#fff;border:4px solid #7bb7d9;border-radius:1.6rem;box-shadow:0 20px 60px rgba(0,0,0,.35);padding:1.2rem 1.6rem 1.4rem;width:min(52rem,94vw);max-height:92vh;overflow:auto;font-size:calc(var(--cu-s)*1.15);line-height:1.5}
+#cu-retiens h2{margin:0 2.8rem .8rem 0;font-size:1.3em;color:#1e3a5f}
+#cu-retiens .cu-x{position:absolute;right:.8rem;top:.8rem;width:2.6rem;height:2.6rem;border-radius:50%;border:2px solid #1f2a44;background:#fff;font:inherit;font-weight:700;cursor:pointer}
+#cu-retiens section{margin:.7rem 0;border-left:8px solid var(--z,#1c7ed6);background:color-mix(in srgb,var(--z,#1c7ed6) 7%,#fff);border-radius:0 18px 18px 0;padding:.5rem 1rem}
+#cu-retiens h3{margin:0 0 .3rem;color:var(--z,#1c7ed6);font-size:1em}
+#cu-retiens ul{list-style:none;margin:0;padding:0}#cu-retiens li{margin:.3rem 0;padding-left:2rem;position:relative}
+#cu-retiens li::before{content:"✓";position:absolute;left:0;top:.1em;width:1.4rem;height:1.4rem;border-radius:50%;background:#43a047;color:#fff;font-size:.8rem;display:grid;place-items:center}
+@media print{#cu-retiens{display:none}}
