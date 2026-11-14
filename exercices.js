@@ -20,7 +20,7 @@
    ctx (donné à charger et aux gestionnaires) :
         ctx.tache({indice})        : début d'une tâche (remet les erreurs à zéro ; en « Avec aide », montre l'aide)
         ctx.bonne({derniere, indice}) : bonne réponse (message, son) ; derniere = vrai si c'est la dernière tâche de l'exercice → exercice fini
-        ctx.faux({indice, reponse, reveler}) : mauvaise réponse (1re fois : encouragement + bouton 💡 ; ensuite : la réponse est montrée par reveler())
+        ctx.faux({indice, reponse, message, reveler}) : mauvaise réponse (1re fois : encouragement + bouton 💡 ; ensuite : la réponse est montrée par reveler())
         ctx.fini()                 : exercice réussi (sans passer par bonne)
         ctx.dire(texte, 'good'|'bad'|''), ctx.son('ok'|'ko'), ctx.erreurs() : erreurs de la tâche
    session.charger(), session.cur(), session.autre(), session.arreter() */
@@ -62,7 +62,7 @@ window.CartesExo=(()=>{
       faux(p){p=p||{};errT++;errEx++;bip('ko');
         if(errT===1&&mode!=='aide'){say(pick(ENC),'bad');indRow.innerHTML='<button type="button" class="btn ghost" id="indBtn">💡 Un indice</button>';
           q('#indBtn').onclick=()=>{say('Indice : '+(p.indice||'relis bien la consigne.'),'bad');indRow.innerHTML='';};}
-        else{indRow.innerHTML='';say('Regarde : '+(p.indice?p.indice+' ':'')+(p.reponse?`La bonne réponse est « ${p.reponse} ».`:'Les mots à trouver sont colorés.'),'bad');if(p.reveler)p.reveler();}},
+        else{indRow.innerHTML='';say('Regarde : '+(p.indice?p.indice+' ':'')+(p.reponse?`La bonne réponse est « ${p.reponse} ».`:(p.message||'Les mots à trouver sont colorés.')),'bad');if(p.reveler)p.reveler();}},
       faute(msg){errEx++;bip('ko');say(msg,'bad');},    /* erreur qui ne suit pas le protocole de l'indice (ex. « a-t-il raison ? ») */
       fini};
     function fini(){

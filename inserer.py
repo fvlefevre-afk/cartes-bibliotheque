@@ -4,7 +4,10 @@ Utilisé par integrer.py (maths) et par inserer_francais() (français). Le résu
 Repères : /*BIB-CSS*/ … /*BIB-CSS-FIN*/ et /*BIB-JS*/ … /*BIB-JS-FIN*/ (retirés puis remis à chaque lancement : relance sans effet)."""
 import pathlib, re, sys
 ICI = pathlib.Path(__file__).resolve().parent
-def css():  return "/*BIB-CSS*/\n" + (ICI / "interface.css").read_text(encoding="utf8") + "\n/*BIB-CSS-FIN*/\n"
+def css(avec_exercices=False):
+    t = (ICI / "interface.css").read_text(encoding="utf8")
+    if avec_exercices: t += "\n" + (ICI / "exercices.css").read_text(encoding="utf8")
+    return "/*BIB-CSS*/\n" + t + "\n/*BIB-CSS-FIN*/\n"
 def js():
     t = (ICI / "interface.js").read_text(encoding="utf8")
     ex = ICI / "exercices.js"
