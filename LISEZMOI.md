@@ -21,3 +21,7 @@ Le moteur du français, extrait de `startAtoi` : `CartesExo.html()` (balisage de
 - **Français : fait.** `startAtoi` (`cartes-mentales-fr/index.html`) est construit sur `CartesExo.session`. Vérifié par un robot qui répond aux exercices (étapes Avec aide, Seul, Je corrige).
 - **Maths : fait (14/11/2026).** `sources/coeur.js` : `serie` (Avec aide / Seul) et `trouver` (Je corrige) sont construits sur `CartesExo.session` ; ne restent que les types de réponse des maths (`repQ` : clavier, choix, grille, étiquettes, mots qui prennent un s). Règle des deux essais comme en français (1re erreur : encouragement + indice 💡 ; 2e : réponse montrée, il faut la donner ; exercice raté reproposé). `assembler.py` colle `exercices.css` + `exercices.js` dans les pages. Reste : le français garde sa copie du CSS des exercices dans sa feuille de style (à retirer pour n'avoir qu'une source).
 - Pour les tests automatiques : `CartesExo.derniere` donne la dernière session (`.cur()` = exercice en cours).
+
+## Dépôt
+
+GitHub : git@github.com:fvlefevre-afk/cartes-bibliotheque.git (branche `main`, on travaille directement dessus). Les cartes de français et de maths la lisent dans le dossier voisin `../cartes-bibliotheque/` : les trois dépôts doivent être côte à côte.
