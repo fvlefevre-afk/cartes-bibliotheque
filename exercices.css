@@ -1,6 +1,6 @@
 /* ===== Bibliothèque commune : MOTEUR D'EXERCICES (mise en forme du bloc .atoi) =====
    Couleur : --z ; texte : --ink ; filets : --line ; texte discret : --soft (valeurs par défaut ci-dessous).
-   Reprise des règles du français (cartes-mentales-fr). Le français garde encore sa propre copie dans sa feuille de style : à terme, la retirer. */
+   Reprise des règles du français (cartes-mentales-fr). Le français l'insère aussi (bloc /*BIB-EXO-CSS*/) ; il ne garde que ses règles propres. */
 .atoi{position:relative;border:3px solid var(--z,#1f5fc4);border-radius:1rem;background:color-mix(in srgb,var(--z,#1f5fc4) 6%,#fff);padding:.8rem 1rem 1rem;text-align:center;margin-bottom:.5rem}
 .atoi h3{margin:0;color:var(--z,#1f5fc4);font-size:1.4rem}
 .atoi .ex-num{font-size:.95rem;color:var(--soft,#55607a);font-weight:400}
